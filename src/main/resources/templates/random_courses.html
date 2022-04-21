@@ -1,27 +1,18 @@
 <!DOCTYPE html>
-
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
-
+<html xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
 <head>
-    <title>Course page</title>
+    <meta charset="UTF-8">
+    <title>Title</title>
     <link rel="stylesheet" href="/webjars/bootstrap/5.1.1/css/bootstrap.min.css" type="text/css">
-
 </head>
 <body>
 
 <div class="container text-center" style="color: plum">
 
-    <div class="h2">Manage Courses</div>
-
-    <div class="m-3">
-        <a class="btn btn-primary m2" th:href="@{/course/new}">Add New Course</a>
+    <div class="h2">Menu of The Week</div>
 
 
-        <a class="btn btn-primary m2" th:href="@{/course/showmenu}">Menu of The Week</a>
-        <br/>
-        <br/>
-        <a class="btn btn-primary m2" th:href="@{/course/vegetarian}">Show Only Vegetarian Courses For The Week</a>
-    </div>
 
     <div>
         <table class="table table-bordered">
@@ -31,22 +22,18 @@
                 <th>Course name</th>
                 <th>Price</th>
                 <th>Vegetarian</th>
-                <th>Ingredients</th>
-                <th>Operations</th>
             </tr>
             </thead>
 
             <tbody class="table-light">
-            <th:block th:each="course : ${courseList}">
+            <th:block th:each="course : ${menu}" >
                 <tr>
                     <td th:text="${course.id}"></td>
                     <td th:text="${course.name}"></td>
                     <td th:text="${course.price}"></td>
                     <td th:text="${course.isVegetarian}"></td>
-                    <td th:text="${course.ingredients}"></td>
                     <td>
-                        <a class="btn btn-primary m2" th:href="@{'/course/edit/' + ${course.id}}">Edit</a>
-                        <a class="btn btn-danger m2" th:href="@{'/course/delete/' + ${course.id}}">Delete</a>
+
                     </td>
                 </tr>
             </th:block>
@@ -57,6 +44,25 @@
 
     </div>
 </div>
+
+<div class="container text-center">
+    <a class="h4" th:href="@{/course/showmenu/groceries}">Groceries List</a>
+
+</div>
+<br/>
+<div class="container text-center">
+
+    <div class="col-sm-12" >
+
+        <button type="button" class="btn btn-secondary btn-danger" onclick="cancelForm()">Return to Homepage</button>
+    </div>
+</div>
+
+<script type="application/javascript">
+    function cancelForm(){
+        window.location="/course";
+    }
+</script>
 
 </body>
 </html>
