@@ -16,8 +16,8 @@ import java.util.Set;
 @Controller
 public class CourseController {
 
-    private CourseService courseService;
-    private IngredientService ingredientService;
+    private final CourseService courseService;
+    private final IngredientService ingredientService;
     private boolean isNewCourse = false;
     private Integer id;
 
